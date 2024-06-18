@@ -1,4 +1,4 @@
-class City  {
+class City {
   //atributos
   final String cityName;
   final bool favoritesCities;
@@ -13,6 +13,7 @@ class City  {
       'favoritescities': favoritesCities,
     };
   }
+
   //fromMap
   factory City.fromMap(Map<String, dynamic> map) {
     return City(

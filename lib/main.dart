@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_api_geo/View/details_weather_screen.dart';
 
 import 'View/favorites_screen.dart';
 import 'View/home_screen.dart';
@@ -10,19 +9,27 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Projeto API GEO",
+      theme: ThemeData(
+        primaryColor: Colors.blue,
+        hintColor: Colors.blueAccent,
+        fontFamily: 'Roboto',
+        textTheme: const TextTheme(
+          titleLarge: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          bodyMedium: TextStyle(fontSize: 16, color: Colors.black87),
+        ),
+      ),
       home: HomeScreen(),
-      routes:{
+      routes: {
         '/home': (context) => HomeScreen(),
         '/favorites': (context) => FavoritesScreen(),
         '/search': (context) => SearchScreen(),
-        
-      }
+      },
     );
   }
 }

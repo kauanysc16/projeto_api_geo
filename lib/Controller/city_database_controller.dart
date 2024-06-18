@@ -1,4 +1,4 @@
-import 'package:projeto_api_geo/Service/city_database_service.dart';
+import 'package:exemplo_api/Service/city_database_service.dart';
 
 import '../Model/city_model.dart';
 
@@ -19,14 +19,17 @@ class CityDbController {
     _cities = maps.map<City>((e) => City.fromMap(e)).toList();
     return _cities;
   }
+
   //add city
   Future<void> addCity(City city) async {
     await _service.insertCity(city);
   }
+
   //update city
   Future<void> updateCity(City city) async {
     await _service.updateCity(city);
   }
+
   //delete city
   Future<void> deleteCity(String city) async {
     await _service.deleteCity(city);

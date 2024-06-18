@@ -8,10 +8,16 @@ class Weather {
   final num tempMin;
 
   //construtor
-  Weather({required this.name, required this.description, required this.main, required this.temp, required this.tempMax, required this.tempMin});
+  Weather(
+      {required this.name,
+      required this.description,
+      required this.main,
+      required this.temp,
+      required this.tempMax,
+      required this.tempMin});
 
   //método
-  factory Weather.fromJson(Map<String,dynamic> json) {
+  factory Weather.fromJson(Map<String, dynamic> json) {
     return Weather(
       name: json['name'],
       description: json['weather'][0]['description'],

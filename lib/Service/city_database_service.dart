@@ -13,7 +13,7 @@ class CityDbService {
           favoritescities BOOLEAN)""";
 
   //getDatabase
-  Future<Database> _openDatabase() async{
+  Future<Database> _openDatabase() async {
     return openDatabase(
       join(await getDatabasesPath(), DB_NAME), // Caminho do banco de dados
       onCreate: (db, version) {
@@ -23,19 +23,21 @@ class CityDbService {
       version: 1,
     );
   }
+
   //crud
   //insert
   Future<void> insertCity(City city) async {
     try {
       Database db = await _openDatabase();
       db.insert(TABLE_NAME, city.toMap());
-      db.close();  
+      db.close();
     } catch (e) {
       print(e);
-    }   
+    }
   }
+
   //list
-  Future<List<Map<String,dynamic>>> listCity() async {
+  Future<List<Map<String, dynamic>>> listCity() async {
     try {
       Database db = await _openDatabase();
       List<Map<String, dynamic>> maps = await db.query(TABLE_NAME);
@@ -46,6 +48,7 @@ class CityDbService {
       return [];
     }
   }
+
   //delete
   Future<void> deleteCity(String city) async {
     try {
@@ -56,16 +59,16 @@ class CityDbService {
       print(e);
     }
   }
+
   //update favoritesCities
   Future<void> updateCity(City city) async {
     try {
       Database db = await _openDatabase();
-      db.update(TABLE_NAME, city.toMap(), where: 'cityname =?', whereArgs: [city.cityName]);
+      db.update(TABLE_NAME, city.toMap(),
+          where: 'cityname =?', whereArgs: [city.cityName]);
       db.close();
     } catch (e) {
       print(e);
     }
   }
-
-
 }
